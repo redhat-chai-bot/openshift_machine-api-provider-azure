@@ -19,7 +19,7 @@ COPY . .
 RUN unset VERSION \
   && GOPROXY=off NO_DOCKER=1 make build
 
-FROM registry.ci.openshift.org/openshift/origin-v4.0:base
+FROM quay-proxy.ci.openshift.org/openshift/ci:openshift_origin-v4.0_base
 COPY --from=builder /go/src/github.com/openshift/machine-api-provider-azure/bin/machine-controller-manager /
 COPY --from=builder /go/src/github.com/openshift/machine-api-provider-azure/bin/termination-handler /
 
